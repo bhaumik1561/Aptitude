@@ -1,0 +1,29 @@
+
+$con=new PDO('mysql:host=127.0.0.1;dbname=aptitude_test','root','');
+
+$query=$dbhandler->query('select * from guestbook');
+	$r=$query->fetchAll(PDO::FETCH_ASSOC);
+	echo '<pre>', print_r($r),'</br>';
+	
+
+		while($r=$query->fetch(PDO::FETCH_OBJ)){
+			
+			//echo data as object
+			echo $r->name,'<br/>';
+		}
+
+
+
+$query=$dbhandler->query('select * from guestbook');
+	//$r=$query->fetchAll(PDO::FETCH_ASSOC);
+	echo $query->rowcount();
+	
+
+
+$sql="insert into guestbook (name,message,posted) values ('Vivek','Good night',now())";
+	$query=$dbhandler->query($sql);
+	
+<?php
+session_start();
+if(!isset($_SESSION['login']))
+{header("location:index.php");}
